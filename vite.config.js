@@ -5,6 +5,13 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "./",
+  root: "./src",
+  publicDir: "../public",
+  build: {
+    emptyOutDir: true,
+    outDir: "../dist",
+  },
   plugins: [
     vue(),
   ],
