@@ -65,7 +65,7 @@ const deleteDevice = (deviceId) => {
     </div>
 
     <div
-      v-for="(device, index) in devices"
+      v-for="device in devices"
       :key="device.id"
       class="device-item"
     >
@@ -81,39 +81,20 @@ const deleteDevice = (deviceId) => {
 <style scoped>
 .device-list {
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #f8f8f8;
 }
 
 .add-device {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
-}
-
-input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  padding: 8px 12px;
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #357ab8;
+  margin-bottom: 15px;
 }
 
 .device-item {
-  margin-bottom: 15px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   background-color: #fff;
+  margin-bottom: 10px;
 }
 </style>

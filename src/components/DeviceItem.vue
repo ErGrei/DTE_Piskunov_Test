@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 import NodeList from "./NodeList.vue";
-import { watchEffect, toRef } from "vue";
 
 const props = defineProps({
   device: Object,
@@ -9,22 +8,18 @@ const props = defineProps({
 
 const emit = defineEmits(["updateDevice", "deleteDevice"]);
 
-const device = toRef(props, "device");
 const isEditing = ref(false);
-const localDeviceName = ref(device.value.name);
+const localDeviceName = ref(props.device.name); 
 
 const saveDevice = () => {
-  emit("updateDevice", { ...device.value, name: localDeviceName.value });
+  emit("updateDevice", { ...props.device, name: localDeviceName.value });
   isEditing.value = false;
 };
 
 const updateNodes = (newNodes) => {
-  emit("updateDevice", { ...device.value, nodes: newNodes });
+  emit("updateDevice", { ...props.device, nodes: newNodes });
 };
 
-watchEffect(() => {
-  localDeviceName.value = device.value.name;
-});
 </script>
 
 <template>
@@ -38,21 +33,14 @@ watchEffect(() => {
       <button @click="isEditing = true">Редактировать</button>
       <button @click="$emit('deleteDevice', device.id)">Удалить</button>
     </div>
-
     <NodeList :nodes="device.nodes" @updateNodes="updateNodes" />
   </div>
 </template>
 
 <style scoped>
-.device-item {
+.device-actions {
   display: flex;
-  align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
-}
-
-span {
-  font-weight: bold;
-  margin-right: 10px;
+  margin-top: 10px;
 }
 </style>

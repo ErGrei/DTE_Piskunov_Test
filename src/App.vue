@@ -12,12 +12,11 @@ import DeviceList from "./components/DeviceList.vue";
 <style scoped>
 #app {
   max-width: 800px;
-  margin: auto;
-  font-family: Arial, sans-serif;
+  width: 100%;
 }
 
 h1 {
   text-align: center;
-  color: #4a90e2;
+  color: #333;
 }
 </style>
